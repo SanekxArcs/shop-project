@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { SanityLive } from "@/sanity/lib/live";
 
 const notoSans = Noto_Sans({ variable: "--font-sans" });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
+        <SanityLive />
       </body>
     </html>
   );
