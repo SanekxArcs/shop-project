@@ -99,6 +99,7 @@ export function NavbarClient({
         <Link
           href="/"
           className="text-xl font-bold tracking-tighter flex items-center"
+          aria-label="Home"
         >
           <div
             className={cn(
@@ -172,6 +173,7 @@ export function NavbarClient({
             size="icon"
             onClick={toggleReducedMotion}
             title={isReducedMotion ? "Enable animations" : "Reduce motion"}
+            aria-label={isReducedMotion ? "Enable animations" : "Reduce motion"}
           >
             {isReducedMotion ? (
               <ZapOff className="w-4 h-4" />
@@ -191,6 +193,7 @@ export function NavbarClient({
             size="icon"
             onClick={toggleReducedMotion}
             title={isReducedMotion ? "Enable animations" : "Reduce motion"}
+            aria-label={isReducedMotion ? "Enable animations" : "Reduce motion"}
           >
             {isReducedMotion ? (
               <ZapOff className="w-5 h-5" />
@@ -204,6 +207,8 @@ export function NavbarClient({
             variant="outline"
             size="icon"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
               <X className="w-5 h-5" />
