@@ -73,7 +73,10 @@ function ProjectCard({project}: {project: CvProject}) {
               {project.imageUrls.map((url, index) => (
                 <div key={index} className="relative aspect-video min-w-0 flex-[0_0_100%]">
                   {project.nda ? (
-                    <div className="text-muted flex h-full w-full items-center justify-center bg-linear-to-t from-emerald-900 to-emerald-950 text-8xl"></div>
+                    <div className="text-muted/50 flex h-full w-full items-center justify-center bg-linear-to-t from-emerald-100 to-emerald-700 text-center text-2xl dark:from-emerald-900 dark:to-emerald-950 dark:text-white/50">
+                      <ImageOff className="mr-2" />
+                      NDA PROTECTED
+                    </div>
                   ) : (
                     <Image
                       src={url ?? ''}
@@ -105,7 +108,7 @@ function ProjectCard({project}: {project: CvProject}) {
               {project.features?.map((feature, i) => (
                 <Badge key={i} variant="outline" className="text-xs">
                   <span className="lg:hidden">
-                  {feature.length > 30 ? `${feature.slice(0, 25)}...` : feature}
+                    {feature.length > 30 ? `${feature.slice(0, 25)}...` : feature}
                   </span>
                   <span className="hidden lg:inline">{feature}</span>
                 </Badge>
