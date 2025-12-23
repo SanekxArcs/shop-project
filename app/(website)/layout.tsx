@@ -1,67 +1,67 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Noto_Sans } from "next/font/google";
+import type {Metadata, Viewport} from 'next'
+import {Geist, Geist_Mono, Noto_Sans} from 'next/font/google'
 import {GoogleAnalytics} from '@next/third-parties/google'
-import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import { SanityLive } from "@/sanity/lib/live";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Footer } from "@/components/footer";
-import Navbar from "@/components/navbar";
-import LightRays from "@/components/bg";
-import { ReducedMotionProvider } from "@/components/reduced-motion-provider";
-import { WelcomeToast } from "@/components/welcome-toast";
+import './globals.css'
+import {Toaster} from '@/components/ui/sonner'
+import {SanityLive} from '@/sanity/lib/live'
+import {ThemeProvider} from '@/components/theme-provider'
+import {Footer} from '@/components/footer'
+import Navbar from '@/components/navbar'
+import LightRays from '@/components/bg'
+import {ReducedMotionProvider} from '@/components/reduced-motion-provider'
+import {WelcomeToast} from '@/components/welcome-toast'
+import {SnowfallEffect} from '@/components/snowfall'
 
-
-const notoSans = Noto_Sans({ variable: "--font-sans" });
+const notoSans = Noto_Sans({variable: '--font-sans'})
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  colorScheme: "dark",
-  themeColor: "black",
-};
+  colorScheme: 'dark',
+  themeColor: 'black',
+}
 
 export const metadata: Metadata = {
-  title: "Oleksandr Dzisiak",
-  description: "Portfolio Website",
-  applicationName: "O-D.DEV",
+  title: 'Oleksandr Dzisiak',
+  description: 'Portfolio Website',
+  applicationName: 'O-D.DEV',
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
-    title: "O-D.DEV",
+    statusBarStyle: 'black-translucent',
+    title: 'O-D.DEV',
   },
   formatDetection: {
     telephone: false,
   },
-  keywords: ["portfolio", "developer", "web development"],
-  authors: [{ name: "Oleksandr Dzisiak" }],
+  keywords: ['portfolio', 'developer', 'web development'],
+  authors: [{name: 'Oleksandr Dzisiak'}],
   openGraph: {
-    title: "Oleksandr Dzisiak",
-    description: "Portfolio Website",
-    type: "website",
+    title: 'Oleksandr Dzisiak',
+    description: 'Portfolio Website',
+    type: 'website',
   },
   icons: {
-    icon: "/web-app-manifest-192x192.png",
-    apple: "/web-app-manifest-192x192.png",
+    icon: '/web-app-manifest-192x192.png',
+    apple: '/web-app-manifest-192x192.png',
   },
-  manifest: "/manifest.json",
-};
+  manifest: '/manifest.json',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" className={notoSans.variable} suppressHydrationWarning>
@@ -90,6 +90,7 @@ export default function RootLayout({
                   distortion={0.05}
                   className="custom-rays"
                 />
+                <SnowfallEffect />
               </div>
               {children}
             </main>

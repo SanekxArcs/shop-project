@@ -14,12 +14,13 @@ import {
   FolderGit2,
   Zap,
   ZapOff,
+  SnowflakeIcon,
 } from "lucide-react";
 import GradualBlur from "./GradualBlur";
 import { motion, AnimatePresence } from "motion/react";
 import { useUIStore } from "@/hooks/use-ui-store";
-import Image from "next/image";
 import {ButtonGroup} from "@/components/ui/button-group";
+import { useSnowfallStore } from "@/lib/snowfallStore";
 
 
 const navLinks = [
@@ -40,6 +41,7 @@ export function NavbarClient({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [activeSection, setActiveSection] = React.useState<string>("");
   const { isReducedMotion, toggleReducedMotion } = useUIStore();
+    const { isEnabled, toggleSnowfall } = useSnowfallStore()
 
   const initials = React.useMemo(() => {
     if (!name) return "OD";
@@ -168,6 +170,17 @@ export function NavbarClient({
           })}
           <div className="h-4 w-px bg-border" />
           <ButtonGroup>
+            <Button
+            variant="outline"
+            className='relative'
+            size="icon" onClick={toggleSnowfall}>
+              <SnowflakeIcon />
+              {!isEnabled && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="h-4 w-0.25 rotate-45 bg-current" />
+          </div>
+        )}
+            </Button>
           <Button
             variant="outline"
             size="icon"
@@ -188,6 +201,17 @@ export function NavbarClient({
         {/* Mobile Menu Toggle */}
         <div className="flex items-center gap-4 md:hidden">
           <ButtonGroup>
+            <Button
+            variant="outline"
+            className='relative'
+            size="icon" onClick={toggleSnowfall}>
+              <SnowflakeIcon />
+              {!isEnabled && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="h-4 w-0.25 rotate-45 bg-current" />
+          </div>
+        )}
+            </Button>
           <Button
             variant="outline"
             size="icon"
