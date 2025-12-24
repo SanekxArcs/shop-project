@@ -1,14 +1,14 @@
 'use client'
 
+import {useMemo} from 'react'
 import {User, Speech} from 'lucide-react'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
-import type {CvProfile} from '@/components/cv/types'
 import {motion, Variants} from 'motion/react'
+
+import {Card, CardContent} from '@/components/ui/card'
+import type {CvProfile} from '@/components/cv/types'
+import {HighlightedText} from '@/components/cv/atoms/highlighted-text'
 import {useUIStore} from '@/hooks/use-ui-store'
-import {HighlightedText} from '../atoms/highlighted-text'
-import {useMemo, useState} from 'react'
 import {getAllSkills} from '@/lib/cv-utils'
-import {cn} from '@/lib/utils'
 
 type Props = {
   profile: CvProfile
@@ -49,7 +49,7 @@ export function About({profile}: Props) {
       <div className="grid grid-cols-1 gap-6">
         <div className="">
           <Card className="group relative h-full overflow-hidden border-2">
-            <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y--8 text-emerald-500 opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.05]">
+            <div className="translate-y--8 absolute top-0 right-0 h-24 w-24 translate-x-8 text-emerald-500 opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.05]">
               <User className="h-full w-full" />
             </div>
             <CardContent className="p-6 pt-0 lg:p-8 lg:pt-0">
@@ -62,7 +62,7 @@ export function About({profile}: Props) {
               </p>
               {profile.softSkills && profile.softSkills.length > 0 && (
                 <>
-                  <div className=" mt-2 flex items-center justify-between gap-2 pt-2 pb-6 text-xl">
+                  <div className="mt-2 flex items-center justify-between gap-2 pt-2 pb-6 text-xl">
                     <div className="flex items-center gap-2 text-xl">
                       <Speech className="h-5 w-5 text-emerald-500" />
                       Soft Skills

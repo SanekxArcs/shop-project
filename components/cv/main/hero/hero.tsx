@@ -2,7 +2,9 @@
 
 import {useMemo} from 'react'
 import { motion, Variants, useReducedMotion } from "motion/react";
+
 import { useUIStore } from "@/hooks/use-ui-store";
+
 import { HeroAvailability } from "./hero-availability";
 import { HeroInfo } from "./hero-info";
 import { HeroActions } from "./hero-actions";
@@ -10,6 +12,7 @@ import { HeroSocials } from "./hero-socials";
 import { HeroLanguages } from "./hero-languages";
 import { HeroDetails } from "./hero-details";
 import { HeroImage } from "./hero-image";
+
 import { CvProfile } from '../../types';
 
 type Props = {

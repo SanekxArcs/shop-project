@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { ArrowUp } from "lucide-react";
+import {ArrowUp} from 'lucide-react'
 
 export const ScrollToTop = () => {
   return (
@@ -12,4 +12,4 @@ export const ScrollToTop = () => {
       <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
     </button>
   )
-};
+}

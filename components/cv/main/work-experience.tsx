@@ -1,38 +1,25 @@
-"use client";
+'use client'
 
-import {
-  Briefcase,
-  MapPin,
-  Calendar,
-  ChevronRight,
-  Building2,
-  ArrowRight,
-  Globe,
-} from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { CvProfile, CvWorkExperience } from "@/components/cv/types";
-import { motion, AnimatePresence } from "motion/react";
-import { cn } from "@/lib/utils";
-import { useState, useMemo } from "react";
-import { ActionButton } from "../atoms/action-button";
-import { HighlightedText } from "../atoms/highlighted-text";
-import { useUIStore } from "@/hooks/use-ui-store";
-import { getAllSkills } from "@/lib/cv-utils";
+import {useState, useMemo} from 'react'
+import {Briefcase, MapPin, Calendar, ChevronRight, Building2, ArrowRight, Globe} from 'lucide-react'
+import {motion, AnimatePresence} from 'motion/react'
+
+import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card'
+import type {CvProfile, CvWorkExperience} from '@/components/cv/types'
+import {HighlightedText} from '@/components/cv/atoms/highlighted-text'
+import {ActionButton} from '@/components/cv/atoms/action-button'
+import {Tabs, TabsList, TabsTrigger} from '@/components/ui/tabs'
+import {Badge} from '@/components/ui/badge'
+import {useUIStore} from '@/hooks/use-ui-store'
+import {getAllSkills} from '@/lib/cv-utils'
+import {cn} from '@/lib/utils'
 
 type Props = {
-  profile: CvProfile;
-};
+  profile: CvProfile
+}
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: {opacity: 0, y: 20},
   visible: {
     opacity: 1,
     y: 0,
@@ -47,19 +34,19 @@ const itemVariants = {
       duration: 0.3,
     },
   },
-};
+}
 
 function ExperienceCard({
   job,
   layoutId,
   allSkills,
 }: {
-  job: CvWorkExperience;
-  layoutId: string;
-  allSkills: string[];
+  job: CvWorkExperience
+  layoutId: string
+  allSkills: string[]
 }) {
-  const { isReducedMotion } = useUIStore();
-  const isRelated = job.isRelated;
+  const {isReducedMotion} = useUIStore()
+  const isRelated = job.isRelated
 
   return (
     <motion.div
@@ -188,30 +175,25 @@ function ExperienceCard({
   )
 }
 
-export function WorkExperience({ profile }: Props) {
-  const [activeTab, setActiveTab] = useState("related");
+export function WorkExperience({profile}: Props) {
+  const [activeTab, setActiveTab] = useState('related')
 
-  const allSkills = useMemo(() => getAllSkills(profile), [profile]);
+  const allSkills = useMemo(() => getAllSkills(profile), [profile])
 
   if (!profile.workExperience || profile.workExperience.length === 0) {
-    return null;
+    return null
   }
 
-  const relatedExperience = profile.workExperience.filter(
-    (job) => job.isRelated
-  );
+  const relatedExperience = profile.workExperience.filter((job) => job.isRelated)
 
-  const notRelatedExperience = profile.workExperience.filter(
-    (job) => !job.isRelated
-  );
+  const notRelatedExperience = profile.workExperience.filter((job) => !job.isRelated)
 
-  // Get cards to display based on active tab
   const displayedCards =
-    activeTab === "related"
+    activeTab === 'related'
       ? relatedExperience
-      : activeTab === "notrelated"
+      : activeTab === 'notrelated'
         ? notRelatedExperience
-        : profile.workExperience;
+        : profile.workExperience
 
   return (
     <section id="experience" className="mb-20 scroll-mt-24">

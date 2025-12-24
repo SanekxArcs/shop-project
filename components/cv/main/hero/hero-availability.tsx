@@ -1,24 +1,27 @@
-"use client";
-import { Badge } from "@/components/ui/badge";
-import { motion, Variants } from "motion/react";
+'use client'
+import {motion, Variants} from 'motion/react'
+
+import {Badge} from '@/components/ui/badge'
+
+import type {CvProfile} from '@/components/cv/types'
+
 import {mainHeadConfig} from './hero.config'
-import type { CvProfile } from "@/components/cv/types";
 
 type Props = {
-  profile: CvProfile;
-  variants: Variants;
-};
+  profile: CvProfile
+  variants: Variants
+}
 
-export function HeroAvailability({ profile, variants }: Props) {
-  const { icons, availability } = mainHeadConfig;
-  
+export function HeroAvailability({profile, variants}: Props) {
+  const {icons, availability} = mainHeadConfig
+
   return (
-    <motion.div className="inline-block mb-4" variants={variants}>
+    <motion.div className="mb-4 inline-block" variants={variants}>
       <Badge
         variant="secondary"
-        className="text-sm p-2.5 font-medium animate-pulse dark:bg-emerald-950/80 bg-emerald-200/80"
+        className="animate-pulse bg-emerald-200/80 p-2.5 text-sm font-medium dark:bg-emerald-950/80"
       >
-        <icons.BadgeCheck className="text-emerald-600 mr-1" />
+        <icons.BadgeCheck className="mr-1 text-emerald-600" />
         {profile.contacts?.workAvailability &&
         Array.isArray(profile.contacts.workAvailability) &&
         profile.contacts.workAvailability.length > 0
@@ -28,5 +31,5 @@ export function HeroAvailability({ profile, variants }: Props) {
           : availability.available}
       </Badge>
     </motion.div>
-  );
+  )
 }

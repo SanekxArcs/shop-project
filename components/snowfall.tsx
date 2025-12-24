@@ -1,7 +1,8 @@
 'use client'
+import Snowfall from 'react-snowfall'
+
 import {useSnowfallStore} from '@/lib/snowfallStore'
 import {cn} from '@/lib/utils'
-import Snowfall from 'react-snowfall'
 
 export function SnowfallEffect() {
   const isEnabled = useSnowfallStore((state) => state.isEnabled)

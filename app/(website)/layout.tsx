@@ -1,16 +1,18 @@
 import type {Metadata, Viewport} from 'next'
 import {Geist, Geist_Mono, Noto_Sans} from 'next/font/google'
+
 import {GoogleAnalytics} from '@next/third-parties/google'
-import './globals.css'
 import {Toaster} from '@/components/ui/sonner'
 import {SanityLive} from '@/sanity/lib/live'
 import {ThemeProvider} from '@/components/theme-provider'
-import {Footer} from '@/components/footer'
-import Navbar from '@/components/navbar'
-import LightRays from '@/components/bg'
+import {Footer} from '@/components/Footer/footer'
+import Navbar from '@/components/Navbar/navbar'
+import LightRays from '@/components/LightRays'
 import {ReducedMotionProvider} from '@/components/reduced-motion-provider'
 import {WelcomeToast} from '@/components/welcome-toast'
 import {SnowfallEffect} from '@/components/snowfall'
+
+import './globals.css'
 
 const notoSans = Noto_Sans({variable: '--font-sans'})
 

@@ -1,3 +1,6 @@
+import {toast} from 'sonner'
+import Link from 'next/link'
+
 import {sanityFetch} from '@/sanity/lib/live'
 import {CV_PROFILE_DATA} from '@/sanity/queries/queries'
 import {CV_PROFILE_DATAResult} from '@/sanity.types'
@@ -9,8 +12,6 @@ import {Skills} from '@/components/cv/main/skills'
 import {Education} from '@/components/cv/main/education'
 import {Projects} from '@/components/cv/main/projects'
 import {Cta} from '@/components/cv/main/cta'
-import Link from 'next/link'
-import {toast} from 'sonner'
 
 export async function CvPage() {
   let profile: CV_PROFILE_DATAResult | null = null
@@ -24,6 +25,7 @@ export async function CvPage() {
   }
 
   if (!profile) {
+    
     return (
       <div className="mx-auto max-w-3xl p-6 text-center">
         <h1 className="text-2xl font-semibold">CV not configured yet</h1>

@@ -1,8 +1,11 @@
 'use client'
 import {motion, Variants} from 'motion/react'
+
 import {ActionButton} from '@/components/cv/atoms/action-button'
-import {mainHeadConfig} from './hero.config'
+
 import type {CvProfile} from '@/components/cv/types'
+
+import {mainHeadConfig} from './hero.config'
 
 type Props = {
   profile: CvProfile

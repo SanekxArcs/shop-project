@@ -1,29 +1,30 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import React from "react";
-import { Spoiler } from "spoiled";
+import React from 'react'
+import Link from 'next/link'
+import {Spoiler} from 'spoiled'
+
+import {Button} from '@/components/ui/button'
+import {cn} from '@/lib/utils'
 
 interface ActionButtonProps {
-  href: string;
-  className?: string;
-  classLink?: string;
-  icon?: React.ReactNode;
-  label?: string;
-  variant?: "default" | "outline" | "ghost" | "link";
-  size?: "default" | "sm" | "lg" | "icon";
-  external?: boolean;
-  download?: boolean;
-  spoiler?: boolean;
-  props?: React.HTMLAttributes<HTMLAnchorElement>;
+  href: string
+  className?: string
+  classLink?: string
+  icon?: React.ReactNode
+  label?: string
+  variant?: 'default' | 'outline' | 'ghost' | 'link'
+  size?: 'default' | 'sm' | 'lg' | 'icon'
+  external?: boolean
+  download?: boolean
+  spoiler?: boolean
+  props?: React.HTMLAttributes<HTMLAnchorElement>
 }
 
 export function ActionButton({
   href,
   icon,
   label,
-  variant = "default",
-  size = "lg",
+  variant = 'default',
+  size = 'lg',
   className,
   classLink,
   external = false,
@@ -33,21 +34,18 @@ export function ActionButton({
 }: ActionButtonProps) {
   const buttonContent = (
     <>
-      {React.cloneElement(
-        icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
-        {
-          className: "size-4 group-hover/button:scale-110 transition-all duration-300",
-        }
-      )}
+      {React.cloneElement(icon as React.ReactElement<React.SVGProps<SVGSVGElement>>, {
+        className: 'size-4 group-hover/button:scale-110 transition-all duration-300',
+      })}
       {spoiler ? (
-        <Spoiler revealOn="hover" fps={1} accentColor={["black", "white"]}>
+        <Spoiler revealOn="hover" fps={1} accentColor={['black', 'white']}>
           {label}
         </Spoiler>
       ) : (
         label || null
       )}
     </>
-  );
+  )
 
   if (external) {
     return (
@@ -63,14 +61,14 @@ export function ActionButton({
           variant={variant}
           size={size}
           className={cn(
-            "group-active/button:scale-90 transition-all duration-200 cursor-pointer",
-            className
+            'cursor-pointer transition-all duration-200 group-active/button:scale-90',
+            className,
           )}
         >
           {buttonContent}
         </Button>
       </a>
-    );
+    )
   }
 
   return (
@@ -84,12 +82,12 @@ export function ActionButton({
         variant={variant}
         size={size}
         className={cn(
-          "group-active/button:scale-90 transition-all duration-200 cursor-pointer",
-          className
+          'cursor-pointer transition-all duration-200 group-active/button:scale-90',
+          className,
         )}
       >
         {buttonContent}
       </Button>
     </Link>
-  );
+  )
 }

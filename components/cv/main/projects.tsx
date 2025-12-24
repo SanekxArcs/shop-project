@@ -1,17 +1,18 @@
 'use client'
 
-import {Globe, Code, Pin, ImageOff, Sparkles, Cpu, ChevronDown} from 'lucide-react'
-import {Card, CardContent, CardHeader, CardTitle, CardFooter} from '@/components/ui/card'
-import {Badge} from '@/components/ui/badge'
-import type {CvProfile, CvProject} from '@/components/cv/types'
-import useEmblaCarousel from 'embla-carousel-react'
-import {Spoiler} from 'spoiled'
-import Image from 'next/image'
 import {useEffect, useState} from 'react'
-import {ActionButton} from '../atoms/action-button'
+import Image from 'next/image'
 import {toast} from 'sonner'
+import {Spoiler} from 'spoiled'
+import useEmblaCarousel from 'embla-carousel-react'
+import {motion, Variants, LayoutGroup} from 'motion/react'
+import {Globe, Code, Pin, ImageOff, Sparkles, Cpu, ChevronDown} from 'lucide-react'
+
+import {Card, CardContent, CardHeader, CardTitle, CardFooter} from '@/components/ui/card'
+import {ActionButton} from '@/components/cv/atoms/action-button'
+import type {CvProfile, CvProject} from '@/components/cv/types'
 import {Button} from '@/components/ui/button'
-import {motion, Variants, LayoutGroup, AnimatePresence} from 'motion/react'
+import {Badge} from '@/components/ui/badge'
 import {useUIStore} from '@/hooks/use-ui-store'
 import {cn} from '@/lib/utils'
 
@@ -61,7 +62,7 @@ function ProjectCard({project}: {project: CvProject}) {
       >
         <div
           className={cn(
-            'absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y--8 opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.05]',
+            'translate-y--8 absolute top-0 right-0 h-24 w-24 translate-x-8 opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.05]',
             project.petProject ? 'text-purple-500' : 'text-emerald-500',
           )}
         >
@@ -98,7 +99,11 @@ function ProjectCard({project}: {project: CvProject}) {
         </motion.div>
         <CardContent className="flex flex-1 flex-col gap-5">
           {project.imageUrls && project.imageUrls.length > 0 && (
-            <motion.div layout="position" className="bg-muted overflow-hidden rounded-md border" ref={emblaRef}>
+            <motion.div
+              layout="position"
+              className="bg-muted overflow-hidden rounded-md border"
+              ref={emblaRef}
+            >
               <div className="flex">
                 {project.imageUrls.map((url, index) => (
                   <div key={index} className="relative aspect-video min-w-0 flex-[0_0_100%]">
@@ -121,7 +126,10 @@ function ProjectCard({project}: {project: CvProject}) {
             </motion.div>
           )}
           {(!project.imageUrls || project.imageUrls.length === 0) && (
-            <motion.div layout="position" className="bg-muted relative aspect-video min-w-0 overflow-hidden rounded-md border">
+            <motion.div
+              layout="position"
+              className="bg-muted relative aspect-video min-w-0 overflow-hidden rounded-md border"
+            >
               <div className="text-muted/50 flex h-full w-full items-center justify-center bg-linear-to-t from-emerald-100 to-emerald-700 text-center text-2xl dark:from-emerald-900 dark:to-emerald-950 dark:text-white/50">
                 <ImageOff className="mr-2" />
                 NO IMAGE
@@ -141,11 +149,14 @@ function ProjectCard({project}: {project: CvProject}) {
               </p>
               {project.description && project.description.length > 120 && (
                 <Button
-                variant="link"
+                  variant="link"
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-xs font-semibold text-emerald-600 transition-colors hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 px-0"
+                  className="px-0 text-xs font-semibold text-emerald-600 transition-colors hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
                 >
-                  {isExpanded ? 'Show less' : 'Read more'}<ChevronDown className={cn('size-4 transition-transform', isExpanded && 'rotate-180')} />
+                  {isExpanded ? 'Show less' : 'Read more'}
+                  <ChevronDown
+                    className={cn('size-4 transition-transform', isExpanded && 'rotate-180')}
+                  />
                 </Button>
               )}
             </motion.div>

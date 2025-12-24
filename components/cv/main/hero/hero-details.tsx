@@ -1,19 +1,22 @@
-"use client";
-import { motion, Variants } from "motion/react";
-import { ActionButton } from "@/components/cv/atoms/action-button";
+'use client'
+import {motion, Variants} from 'motion/react'
+
+import {ActionButton} from '@/components/cv/atoms/action-button'
+
+import type {CvProfile} from '@/components/cv/types'
+
 import {mainHeadConfig} from './hero.config'
-import type { CvProfile } from "@/components/cv/types";
 
 type Props = {
-  profile: CvProfile;
-  variants: Variants;
-};
+  profile: CvProfile
+  variants: Variants
+}
 
-export function HeroDetails({ profile, variants }: Props) {
-  const { icons, contact, urls } = mainHeadConfig;
+export function HeroDetails({profile, variants}: Props) {
+  const {icons, contact, urls} = mainHeadConfig
 
   return (
-    <motion.div className="flex flex-row flex-wrap gap-2 mb-4" variants={variants}>
+    <motion.div className="mb-4 flex flex-row flex-wrap gap-2" variants={variants}>
       {profile.contacts?.location && (
         <ActionButton
           href={urls.mapsWarsaw}
@@ -24,9 +27,9 @@ export function HeroDetails({ profile, variants }: Props) {
           className="text-muted-foreground"
         />
       )}
-      {typeof profile.contacts?.relocationReady === "boolean" && (
+      {typeof profile.contacts?.relocationReady === 'boolean' && (
         <ActionButton
-          icon={<icons.Map className="w-4 h-4" />}
+          icon={<icons.Map className="h-4 w-4" />}
           href={urls.maps}
           size="sm"
           variant="link"
@@ -35,7 +38,7 @@ export function HeroDetails({ profile, variants }: Props) {
               ? contact.relocation.ready
               : contact.relocation.notReady
           }
-          className="flex items-center gap-2 text-muted-foreground"
+          className="text-muted-foreground flex items-center gap-2"
         />
       )}
       {profile.contacts?.typeOfContract && (
@@ -43,15 +46,15 @@ export function HeroDetails({ profile, variants }: Props) {
           href={urls.b2bSearch}
           variant="link"
           size="sm"
-          icon={<icons.Banknote className="w-4 h-4" />}
+          icon={<icons.Banknote className="h-4 w-4" />}
           label={
             Array.isArray(profile.contacts.typeOfContract)
-              ? profile.contacts.typeOfContract.join(", ")
+              ? profile.contacts.typeOfContract.join(', ')
               : profile.contacts.typeOfContract
           }
-          className="flex items-center gap-2 text-muted-foreground"
+          className="text-muted-foreground flex items-center gap-2"
         />
       )}
     </motion.div>
-  );
+  )
 }

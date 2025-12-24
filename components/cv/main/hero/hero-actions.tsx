@@ -1,20 +1,22 @@
-"use client";
-import { motion, Variants } from "motion/react";
-import { ButtonGroup } from "@/components/ui/button-group";
-import { ActionButton } from "@/components/cv/atoms/action-button";
+'use client'
+import {motion, Variants} from 'motion/react'
+
+import {ButtonGroup} from '@/components/ui/button-group'
+import {ActionButton} from '@/components/cv/atoms/action-button'
+import type {CvProfile} from '@/components/cv/types'
+
 import {mainHeadConfig} from './hero.config'
-import type { CvProfile } from "@/components/cv/types";
 
 type Props = {
-  profile: CvProfile;
-  variants: Variants;
-};
+  profile: CvProfile
+  variants: Variants
+}
 
-export function HeroActions({ profile, variants }: Props) {
-  const { icons, actions } = mainHeadConfig;
+export function HeroActions({profile, variants}: Props) {
+  const {icons, actions} = mainHeadConfig
 
   return (
-    <motion.div className="flex flex-wrap gap-4 mb-8" variants={variants}>
+    <motion.div className="mb-8 flex flex-wrap gap-4" variants={variants}>
       <ButtonGroup>
         {profile.cvFileUrl && (
           <ActionButton
@@ -43,7 +45,7 @@ export function HeroActions({ profile, variants }: Props) {
             icon={<icons.Mail />}
             label={profile.contacts.email}
             variant="outline"
-            className="rounded-r-none text-muted-foreground"
+            className="text-muted-foreground rounded-r-none"
           />
         )}
         {profile.contacts?.phoneNumber && (
@@ -52,10 +54,10 @@ export function HeroActions({ profile, variants }: Props) {
             icon={<icons.Phone />}
             spoiler
             variant="outline"
-            className="rounded-l-none text-muted-foreground"
+            className="text-muted-foreground rounded-l-none"
           />
         )}
       </ButtonGroup>
     </motion.div>
-  );
+  )
 }

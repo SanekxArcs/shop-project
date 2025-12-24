@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+
 import { useUIStore } from "@/hooks/use-ui-store";
 
 export default function Template({ children }: { children: React.ReactNode }) {

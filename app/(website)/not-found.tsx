@@ -1,8 +1,9 @@
 "use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { toast } from "sonner";
 import { useEffect } from "react";
+import Link from "next/link"
+import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button"
 
 export default function NotFound() {
     useEffect(() => {

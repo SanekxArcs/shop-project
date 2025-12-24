@@ -1,40 +1,32 @@
-"use client";
-import { useEffect } from "react";
-import { MotionConfig } from "motion/react";
+'use client'
+import {useEffect} from 'react'
+import {MotionConfig} from 'motion/react'
 
-import { useUIStore } from "@/hooks/use-ui-store";
+import {useUIStore} from '@/hooks/use-ui-store'
 
-export function ReducedMotionProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const { isReducedMotion, syncSystemPreference } = useUIStore();
+export function ReducedMotionProvider({children}: {children: React.ReactNode}) {
+  const {isReducedMotion, syncSystemPreference} = useUIStore()
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
     const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-      syncSystemPreference(e.matches);
-    };
+      syncSystemPreference(e.matches)
+    }
 
-    syncSystemPreference(mediaQuery.matches);
+    syncSystemPreference(mediaQuery.matches)
 
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [syncSystemPreference]);
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [syncSystemPreference])
 
   useEffect(() => {
     if (isReducedMotion) {
-      document.body.classList.add("reduce-motion");
+      document.body.classList.add('reduce-motion')
     } else {
-      document.body.classList.remove("reduce-motion");
+      document.body.classList.remove('reduce-motion')
     }
-  }, [isReducedMotion]);
+  }, [isReducedMotion])
 
-  return (
-    <MotionConfig reducedMotion={isReducedMotion ? "always" : "user"}>
-      {children}
-    </MotionConfig>
-  );
+  return <MotionConfig reducedMotion={isReducedMotion ? 'always' : 'user'}>{children}</MotionConfig>
 }

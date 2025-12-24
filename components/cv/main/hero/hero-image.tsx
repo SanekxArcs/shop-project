@@ -1,18 +1,20 @@
-"use client";
-import { motion, Variants } from "motion/react";
-import Image from "next/image";
+'use client'
+import {motion, Variants} from 'motion/react'
+import Image from 'next/image'
+
+import type {CvProfile} from '@/components/cv/types'
+
 import {mainHeadConfig} from './hero.config'
-import type { CvProfile } from "@/components/cv/types";
 
 type Props = {
-  profile: CvProfile;
-  variants: Variants;
-  shouldReduceMotion: boolean;
-};
+  profile: CvProfile
+  variants: Variants
+  shouldReduceMotion: boolean
+}
 
-export function HeroImage({ profile, variants, shouldReduceMotion }: Props) {
-  const { image } = mainHeadConfig;
-  
+export function HeroImage({profile, variants, shouldReduceMotion}: Props) {
+  const {image} = mainHeadConfig
+
   const initials = (profile.name || '')
     .split(' ')
     .map((n) => n[0])
@@ -34,7 +36,7 @@ export function HeroImage({ profile, variants, shouldReduceMotion }: Props) {
               <div
                 role="img"
                 aria-label={image.logoAlt}
-                className="size-full from-emerald-950 to-emerald-900 bg-linear-to-t dark:from-white dark:to-emerald-100 transition-colors duration-300"
+                className="size-full bg-linear-to-t from-emerald-950 to-emerald-900 transition-colors duration-300 dark:from-white dark:to-emerald-100"
                 style={{
                   maskImage: `url(${profile.logoUrl})`,
                   WebkitMaskImage: `url(${profile.logoUrl})`,

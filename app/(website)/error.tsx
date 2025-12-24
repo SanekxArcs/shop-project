@@ -1,8 +1,9 @@
-"use client"; // Error components must be Client Components
+"use client";
 
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
 
 export default function Error({
   error,

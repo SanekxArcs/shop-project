@@ -1,8 +1,4 @@
 import Link from 'next/link'
-import {Rodo} from './cv/main/rodo'
-import {client} from '@/sanity/lib/client'
-import {CV_PROFILE_DATA} from '@/sanity/queries/queries'
-import {CV_PROFILE_DATAResult} from '@/sanity.types'
 import {
   Github,
   Linkedin,
@@ -17,9 +13,15 @@ import {
   Facebook,
   MessageCircle,
 } from 'lucide-react'
-import {Button} from './ui/button'
-import {ScrollToTop} from './scroll-to-top'
-import {HighlightedText} from './cv/atoms/highlighted-text'
+
+import {client} from '@/sanity/lib/client'
+import {CV_PROFILE_DATA} from '@/sanity/queries/queries'
+import {CV_PROFILE_DATAResult} from '@/sanity.types'
+
+import {Rodo} from '@/components/cv/main/rodo'
+import {Button} from '@/components/ui/button'
+import {ScrollToTop} from '@/components/scroll-to-top'
+import {HighlightedText} from '@/components/cv/atoms/highlighted-text'
 import {cn} from '@/lib/utils'
 
 export const Footer = async () => {
@@ -52,7 +54,7 @@ export const Footer = async () => {
     : 'OD'
 
   return (
-    <footer className="bg-background/95 relative overflow-hidden border-t pt-16 pb-8  cursor-default">
+    <footer className="bg-background/95 relative cursor-default overflow-hidden border-t pt-16 pb-8">
       {/* Decorative Background Icon */}
       <div className="pointer-events-none absolute -top-20 -right-20 opacity-[0.03] transition-transform duration-500 group-hover:scale-110">
         <Globe className="h-96 w-96" />
@@ -65,14 +67,16 @@ export const Footer = async () => {
             <div className="flex items-center gap-2">
               <div
                 className={cn(
-                  'flex h-8 w-8 items-center justify-center overflow-hidden relative',
-                  profile?.logoUrl ? 'bg-transparent' : 'bg-emerald-600 rounded-lg text-white font-bold'
+                  'relative flex h-8 w-8 items-center justify-center overflow-hidden',
+                  profile?.logoUrl
+                    ? 'bg-transparent'
+                    : 'rounded-lg bg-emerald-600 font-bold text-white',
                 )}
               >
                 {profile?.logoUrl ? (
                   <div
                     role="img"
-                    className="h-full w-full from-emerald-950 to-emerald-900 bg-linear-to-t dark:from-white dark:to-emerald-100 transition-colors duration-300"
+                    className="h-full w-full bg-linear-to-t from-emerald-950 to-emerald-900 transition-colors duration-300 dark:from-white dark:to-emerald-100"
                     style={{
                       maskImage: `url(${profile.logoUrl})`,
                       WebkitMaskImage: `url(${profile.logoUrl})`,
@@ -88,7 +92,7 @@ export const Footer = async () => {
                   initials
                 )}
               </div>
-              <span className="text-xl font-bold cursor-default tracking-tighter">
+              <span className="cursor-default text-xl font-bold tracking-tighter">
                 {profile?.name || 'Oleksandr Dzisiak'}
               </span>
             </div>
@@ -183,15 +187,13 @@ export const Footer = async () => {
               <div className="pt-2">
                 <Link
                   href={
-                    profile?.contacts?.phoneNumber
-                      ? `tel:${profile.contacts.phoneNumber}`
-                      : '#cta'
+                    profile?.contacts?.phoneNumber ? `tel:${profile.contacts.phoneNumber}` : '#cta'
                   }
                 >
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-9 gap-2 cursor-pointer border-emerald-500/20 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
+                    className="h-9 cursor-pointer gap-2 border-emerald-500/20 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
                   >
                     <MessageSquare className="h-4 w-4" />
                     Let&apos;s Talk
